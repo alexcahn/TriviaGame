@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trivia!</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Sports Trivia!</h1>
+    </header>
+
+    <div id="show-number"></div>
+
+    <button type="button" id="startGame" class="btn btn-primary btn-lg">START QUIZ</button>
+    <br><br>
+
+    Question
+
+    <div id="questionBox"></div>
+
+    <div id="scoreBoard"></div>
+
+    <!-- buttons for completing the quiz and restarting the game, linked to the javascript for functionality -->
+    <button class="button" id="doneButton">Done!</button>
+    <button id="restartButton">Restart!</button>
+
+    <script src="assets/javascript/app.js"></script>
+</body>
+
+</html>
