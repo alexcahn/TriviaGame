@@ -16,7 +16,7 @@ var questions = [
     {
         question: "2. Who holds the single-season record for touchdown receptions?",
         answers: ["Jerry Rice", "Tim Brown", "Randy Moss", "Marvin Harrison"],
-        correctAnswer: "18"
+        correctAnswer: "Randy Moss"
     },
     {
         question: "3. Who was the first person to run a 4 minute mile?",
@@ -40,7 +40,7 @@ var questions = [
     },
     {
         question: "7. Who was the first NFL running back to finish the season with 10 or more carries and gain negative yards?",
-        answers: ["Alfred Blue", "Reggie Bush", "Darren McFadden", ""],
+        answers: ["Alfred Blue", "Reggie Bush", "Darren McFadden", "Frank Gore"],
         correctAnswer: "Reggie Bush"
     },
     {
@@ -66,7 +66,7 @@ var questions = [
     {
         question: "12. Who was on the cover of the first Madden football game?",
         answers: ["Joe Montana", "John Elway", "John Madden", "Dan Marino"],
-        correctAnswer: "Ron Hextall"
+        correctAnswer: "John Madden"
     },
     {
         question: "13. Against what opposing team did Babe Ruth hit his first career home run?",
@@ -87,18 +87,24 @@ var questions = [
 
 for (var i = 0; i < questions.length; i++) {
     $("#questionBox").append("<br><div>" + questions[i].question + "</div>");
+    
     for (var j = 0; j < questions[i].answers.length; j++) {
-        $("#questionBox").append('<input type="radio" name=' + i + ' class="choice" value=' + questions[i].answers[j] + '>' + questions[i].answers[j]+ "<br>");
+        var answerInput = $("<input>");
+        answerInput.attr("type", "radio")
+        answerInput.attr("name", i)
+        answerInput.attr("class","choice")
+        answerInput.attr("value", questions[i].correctAnswer)
+        $("#questionBox").append(answerInput);
+        $("#questionBox").append(questions[i].answers[j] + "</br>")
     }
 }
 
 $(document).ready(function () {
 
     //  global variables
-    var number = 5;
+    var number = 90;
     var intervalId;
     var userScore = 0;
-    var unanswered = 0;
 
     // start the game
     $("#startGame").on("click", start)
