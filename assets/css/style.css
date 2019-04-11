@@ -1,3 +1,38 @@
 html{
     margin: 50px;
+    background-image: url(/assets/images/sportsback.jpg);
+    background-size: 18%;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#startGame{
+    margin-left: 45%;
+    margin-right: 45%;
+}
+
+#questionBox{
+    font-size: 120%;
+    text-align: center;
+}
+
+#scoreBoard{
+    text-align: center;
+    font-size: 250%;
+    padding-bottom: 20px;
+    font-weight: bolder;
+}
+
+#show-number{
+    text-align: center;
+}
+
+#doneButton{
+    margin-left: 40.5%;
+    margin-right: 45%;
+    margin-top: 20px;
+    width: 20%;
 }

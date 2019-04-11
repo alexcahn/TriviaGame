@@ -87,7 +87,7 @@ var questions = [
 
 // for (var i = 0; i < questions.length; i++) {
 //     $("#questionBox").append("<br><div>" + questions[i].question + "</div>");
-    
+
 //     for (var j = 0; j < questions[i].answers.length; j++) {
 //         var answerInput = $("<input>");
 //         answerInput.attr("type", "radio")
@@ -104,13 +104,12 @@ var questions = [
 $(document).ready(function () {
 
     //  global variables
-    var number = 5;
+    var number = 90;
     var intervalId;
     var userScore = 0;
-
+    $("#doneButton").hide()
     // start the game
     $("#startGame").on("click", start);
-    $("#restartButton").on("click", start);
 
     function start() {
         clearInterval(intervalId);
@@ -118,19 +117,33 @@ $(document).ready(function () {
         $(this).hide();
         for (var i = 0; i < questions.length; i++) {
             $("#questionBox").append("<br><div>" + questions[i].question + "</div>");
-            
+
             for (var j = 0; j < questions[i].answers.length; j++) {
                 var answerInput = $("<input>");
                 answerInput.attr("type", "radio")
                 answerInput.attr("name", i)
-                answerInput.attr("class","choice")
+                answerInput.attr("class", "choice")
                 // console.log(questions[i].answers[j])
                 answerInput.attr("value", questions[i].answers[j])
                 $("#questionBox").append(answerInput);
                 $("#questionBox").append(questions[i].answers[j] + "</br>")
             }
-        }
+        }$("#doneButton").show()
     }
+
+    $("#doneButton").on("click",function(){
+        $(this).hide();
+        console.log("done")
+        checkScore();
+        stop();
+        $("#questionBox").hide();
+    })
+
+    // function restartGame() {
+    //     number = 90;
+    //     intervalId;
+    //     userScore = 0;
+    // }
 
     //  The decrement function.
     function decrement() {
@@ -150,7 +163,6 @@ $(document).ready(function () {
     function stop() {
         clearInterval(intervalId);
         $("#show-number").html("<h2> End of Game </h2>");
-        $("#show-number").append("<button id='restartButton'>Restart</button>");
     }
 
     //   create function to check score. if time hits 0 or someone clicks done
@@ -160,11 +172,15 @@ $(document).ready(function () {
             console.log(questions[i].correctAnswer)
             if ($("input[type=radio][class=choice][name=" + i + "]:checked").val() === questions[i].correctAnswer) {
                 userScore++
-                $("#scoreBoard").text(userScore + " out of " + questions.length);
-                $("#scoreBoard").append("<button>Restart</button>")
-                }else if (number === 0){
-                    $("#scoreBoard").text(userScore + " out of " + questions.length);
-                }
-            }stop();
-        }
-    })
+                $("#scoreBoard").text("Your Score: " + userScore + " out of " + questions.length);
+                $("#doneButton").hide();
+                // $("#scoreBoard").append("<br><button>Restart</button>").attr("id", "restartButton")
+            } else if (number === 0) {
+                $("#scoreBoard").text("Your Score: " + userScore + " out of " + questions.length);
+                $("#doneButton").hide();
+                // $("#scoreBoard").append("<br><button>Restart</button>").attr("id", "restartButton")
+            }
+        } stop();
+        // $("#restartButton").on("click", restartGame)
+    }
+})
