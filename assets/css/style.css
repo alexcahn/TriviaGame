@@ -1,6 +1,6 @@
 html{
     margin: 50px;
-    background-image: url(/assets/images/sportsback.jpg);
+    background-image: url("../images/sportsback.jpg");
     background-size: 18%;
 }
 
@@ -10,8 +10,8 @@ h1{
 }
 
 #startGame{
-    margin-left: 45%;
-    margin-right: 45%;
+    margin-left: 44%;
+    width: 150px;
 }
 
 #questionBox{
