@@ -108,10 +108,12 @@ $(document).ready(function () {
     var intervalId;
     var userScore = 0;
     $("#doneButton").hide()
+    $("#restartButton").hide()
     // start the game
     $("#startGame").on("click", start);
 
     function start() {
+        console.log("start")
         clearInterval(intervalId);
         intervalId = setInterval(decrement, 1000);
         $(this).hide();
@@ -123,12 +125,12 @@ $(document).ready(function () {
                 answerInput.attr("type", "radio")
                 answerInput.attr("name", i)
                 answerInput.attr("class", "choice")
-                // console.log(questions[i].answers[j])
                 answerInput.attr("value", questions[i].answers[j])
                 $("#questionBox").append(answerInput);
                 $("#questionBox").append(questions[i].answers[j] + "</br>")
             }
         }$("#doneButton").show()
+        $("#restartButton").hide();
     }
 
     $("#doneButton").on("click",function(){
@@ -138,6 +140,19 @@ $(document).ready(function () {
         stop();
         $("#questionBox").hide();
     })
+
+    $("#restartButton").on("click", function() {
+        userScore = 0;
+        number = 150;
+        console.log("this.hide");
+        $("#scoreBoard").hide();
+        $("#questionBox").show();
+        for(var i = 0; i < 15; i++){
+        $("[name=" + i + "]").prop("checked", false);
+    };checkScore();
+    $("#restartButton").hide();
+    start();
+})
 
     // function restartGame() {
     //     number = 90;
@@ -168,17 +183,22 @@ $(document).ready(function () {
     //   create function to check score. if time hits 0 or someone clicks done
     function checkScore() {
         for (var i = 0; i < questions.length; i++) {
-            console.log($("input[type=radio][class=choice][name=" + i + "]:checked").val())
-            console.log(questions[i].correctAnswer)
+            // console.log($("input[type=radio][class=choice][name=" + i + "]:checked").val())
+            // console.log(questions[i].correctAnswer)
             if ($("input[type=radio][class=choice][name=" + i + "]:checked").val() === questions[i].correctAnswer) {
                 userScore++
                 $("#scoreBoard").text("Your Score: " + userScore + " out of " + questions.length);
                 $("#doneButton").hide();
+                $("#restartButton").show();
                 // $("#scoreBoard").append("<br><button>Restart</button>").attr("id", "restartButton")
             } else if (number === 0) {
                 $("#scoreBoard").text("Your Score: " + userScore + " out of " + questions.length);
                 $("#doneButton").hide();
+                $("#restartButton").show();
                 // $("#scoreBoard").append("<br><button>Restart</button>").attr("id", "restartButton")
+            }else if (userScore == 0){
+                $("#scoreBoard").text("Your Score: " + userScore + " out of " + questions.length);
+                $("#restartButton").show();
             }
         } stop();
         // $("#restartButton").on("click", restartGame)
