@@ -104,7 +104,7 @@ var questions = [
 $(document).ready(function () {
 
     //  global variables
-    var number = 90;
+    var number = 150;
     var intervalId;
     var userScore = 0;
     $("#doneButton").hide()
