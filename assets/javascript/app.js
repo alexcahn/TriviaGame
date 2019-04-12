@@ -113,7 +113,6 @@ $(document).ready(function () {
     $("#startGame").on("click", start);
 
     function start() {
-        console.log("start")
         clearInterval(intervalId);
         intervalId = setInterval(decrement, 1000);
         $(this).hide();
@@ -135,7 +134,6 @@ $(document).ready(function () {
 
     $("#doneButton").on("click",function(){
         $(this).hide();
-        console.log("done")
         checkScore();
         stop();
         $("#questionBox").hide();
@@ -153,12 +151,6 @@ $(document).ready(function () {
     $("#restartButton").hide();
     start();
 })
-
-    // function restartGame() {
-    //     number = 90;
-    //     intervalId;
-    //     userScore = 0;
-    // }
 
     //  The decrement function.
     function decrement() {
@@ -183,25 +175,20 @@ $(document).ready(function () {
     //   create function to check score. if time hits 0 or someone clicks done
     function checkScore() {
         for (var i = 0; i < questions.length; i++) {
-            // console.log($("input[type=radio][class=choice][name=" + i + "]:checked").val())
-            // console.log(questions[i].correctAnswer)
             if ($("input[type=radio][class=choice][name=" + i + "]:checked").val() === questions[i].correctAnswer) {
                 userScore++
                 $("#scoreBoard").text("Your Score: " + userScore + " out of " + questions.length);
                 $("#doneButton").hide();
                 $("#restartButton").show();
-                // $("#scoreBoard").append("<br><button>Restart</button>").attr("id", "restartButton")
             } else if (number === 0) {
                 $("#scoreBoard").text("Your Score: " + userScore + " out of " + questions.length);
                 $("#doneButton").hide();
                 $("#restartButton").show();
-                // $("#scoreBoard").append("<br><button>Restart</button>").attr("id", "restartButton")
             }else if (userScore == 0){
                 $("#scoreBoard").text("Your Score: " + userScore + " out of " + questions.length);
                 $("#restartButton").show();
             }
         } stop();
         $("#scoreBoard").show();
-        // $("#restartButton").on("click", restartGame)
     }
 })
