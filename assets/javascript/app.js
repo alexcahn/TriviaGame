@@ -144,12 +144,12 @@ $(document).ready(function () {
     $("#restartButton").on("click", function() {
         userScore = 0;
         number = 150;
-        console.log("this.hide");
         $("#scoreBoard").hide();
+        $("#questionBox").empty();
         $("#questionBox").show();
         for(var i = 0; i < 15; i++){
         $("[name=" + i + "]").prop("checked", false);
-    };checkScore();
+    };
     $("#restartButton").hide();
     start();
 })
@@ -201,6 +201,7 @@ $(document).ready(function () {
                 $("#restartButton").show();
             }
         } stop();
+        $("#scoreBoard").show();
         // $("#restartButton").on("click", restartGame)
     }
 })
